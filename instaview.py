@@ -20,6 +20,7 @@ html_template = \
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Instagram Data Report">
 <meta name="author" content="Micha Birklbauer">
@@ -181,6 +182,8 @@ credits = \
 # default filenames and arguments should be fine for all functions if script is in the right directory
 def read_profile(filename = "profile.json"):
 
+    print("read_profile()")
+
     # error controls and logging
     status = 0
     errors = []
@@ -211,6 +214,8 @@ def read_profile(filename = "profile.json"):
 
 # reading search information and converting it to html string
 def read_searches(filename = "searches.json"):
+
+    print("read_searches()")
 
     # error controls and logging
     status = 0
@@ -247,6 +252,9 @@ def read_searches(filename = "searches.json"):
 
 # reading connection information and converting it to html string
 def read_connections(filename = "connections.json"):
+
+    print("read_connections()")
+
 
     # error controls and logging
     status = 0
@@ -394,6 +402,8 @@ def read_connections(filename = "connections.json"):
 
 # reading media information and converting it to html string
 def read_media(filename = "media.json"):
+
+    print("read_media()")
 
     # error controls and logging
     status = 0
@@ -572,6 +582,8 @@ def read_media(filename = "media.json"):
 # reading comment information and converting it to html string
 def read_comments(filename = "comments.json"):
 
+    print("read_comments()")
+
     # error controls and logging
     status = 0
     errors = []
@@ -671,6 +683,8 @@ def read_comments(filename = "comments.json"):
 # there are no input checks, incorrect inputs will lead to crashes!
 # so be careful if you don't want things to go sideways
 def read_messages(filename = "messages.json", profile = "profile.json", profile_pic = None, default_avatar = None, download_all = False, hd = False, avatars_dict = {}):
+
+    print("read_messages()")
 
     # error controls and logging
     status = 0
@@ -821,7 +835,7 @@ def read_messages(filename = "messages.json", profile = "profile.json", profile_
 
             html_chat_string = "<h3 id=\"" + str("".join(participants)) + "\">" + str(", ".join(participants)) + "</h3>\n\n"
 
-            for message in conversation:
+            for message in reversed(conversation):
                 if message["sender"] == user_username:
                     html_chat_string = html_chat_string + "<div class=\"container darker\">\n"
                     html_chat_string = html_chat_string + "\t<img src=\"" + str(avatars[message["sender"]]) + "\" alt=\"" + str(message["sender"]).upper() + "\" class=\"right\" style=\"width:100%;\">\n"
